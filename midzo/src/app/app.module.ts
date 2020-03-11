@@ -12,6 +12,12 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AngularFireAuthModule } from '@angular/fire/auth'
 
+import { GeofirexService } from './services/geofirex.service';
+import { GeocodingService } from './services/geocoding.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +30,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth'
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    GeofirexService,
+    GeocodingService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
