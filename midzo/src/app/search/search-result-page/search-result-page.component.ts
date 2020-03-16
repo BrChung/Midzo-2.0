@@ -14,7 +14,7 @@ export class SearchResultPageComponent implements OnInit {
 
   points: Observable<any>
   geo: any;
-  radius = new BehaviorSubject(20);
+  radius = new BehaviorSubject(7);
   latitude: number;
   longitude: number;
 
@@ -31,10 +31,10 @@ export class SearchResultPageComponent implements OnInit {
     })
     this.geo = this.geofirex.getGeo();
     const center = this.geo.point(this.latitude, this.longitude);
-    const field = 'pos'
+    const field = 'position'
 
     //const destinations = firebase.firestore().collection('destinations').where('tags', 'array-contains-any', ['school']);
-    const destinations = firebase.firestore().collection('destinations');
+    const destinations = firebase.firestore().collection('demo-destinations');
 
     this.points = this.radius.pipe(
       switchMap(r => {
